@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<form class="bg-white p-5 rounded mt-3" action="" method="POST">
+    <h1 class="text-center">Sign Up</h1>
+
+    {{ form.csrf_token }}
+
+    {{ form.first_name.label }}
+    {{ form.first_name(class='form-control', placeholder='Enter First Name') }}
+
+    {{ form.last_name.label }}
+    {{ form.last_name(class='form-control', placeholder='Enter Last Name') }}
+
+    {{ form.street_address.label }}
+    {{ form.street_address(class='form-control', placeholder='Enter Street Address') }}
+
+    {{ form.phone_number.label }}
+    {{ form.phone_number(class='form-control', placeholder='Enter Phone Number')}}
+
+
+    {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+
+</form>
+{% endblock %}
