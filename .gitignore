@@ -2,5 +2,6 @@
 venv
 # Python Interpreter Compiled Code
 __pycache__
-
+# SQLite Database
+#app.db
 
