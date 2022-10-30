@@ -6,6 +6,18 @@ from app.models import User
 
 # Create routes for our app
 @app.route('/')
+def index():
+    user_info = {
+        'username': 'cbale',
+        'email': 'christianb@movies.com'
+    }
+    colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+    return render_template('index.html', user=user_info, colors=colors)
+
+@app.route('/posts')
+def posts():
+    return render_template('posts.html')
+
 def home():
     return render_template('home.html')
 
@@ -48,6 +60,7 @@ def login():
             return redirect(url_for('login'))
 
     return render_template('login.html', form=form)
+
 
 
 @app.route('/logout')

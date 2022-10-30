@@ -1,7 +1,10 @@
 from datetime import datetime
+from sqlalchemy import ForeignKey
+#from sqlalchemy import LABEL_STYLE_TABLENAME_PLUS_COL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import db, login
+
 
 
 # Create a User class that inherits from the db.Model class
@@ -9,7 +12,11 @@ from app import db, login
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True) 
-    email = db.Column(db.String(50), nullable=False, unique=True)
+    #first_name =db.Column(db.String(50), nullable= False, unique = True)
+    #last_name =db.Column(db.String(50), nullable= False, unique = True)
+    #phone_number =db.Column(db.String, nullable= False)
+    #street_address =db.Column(db.String(50),nullable= False)
+    #email = db.Column(db.String(50), nullable=False, unique=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -31,8 +38,16 @@ class User(db.Model, UserMixin):
     def check_password(self, password_guess):
         return check_password_hash(self.password, password_guess)
 
+class Address(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    user_id = db.Column(db.ForeignKey("user.id")) 
+    first_name =db.Column(db.String(50), nullable= False, unique = True)
+    last_name =db.Column(db.String(50), nullable= False, unique = True)
+    phone_number =db.Column(db.String, nullable= False)
+    street_address =db.Column(db.String(50),nullable= False)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-@login.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+#@login.user_loader
+#def load_user(user_id):
+    #return User.query.get(user_id)
     
