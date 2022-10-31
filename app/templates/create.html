@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Add Address{% endblock %}
 
 {% block content %}
-
 <form class="bg-white p-5 rounded mt-3" action="" method="POST">
-    <h1 class="text-center">Sign Up</h1>
+    <h1 class="text-center">Add New Address</h1>
 
     {{ form.csrf_token }}
 
@@ -21,8 +20,7 @@
     {{ form.phone_number.label }}
     {{ form.phone_number(class='form-control', placeholder='Enter Phone Number')}}
 
-
     {{ form.submit(class='btn btn-primary w-100 mt-3') }}
 
 </form>
-{% endblock %}
+{% endblock content %}
