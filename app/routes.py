@@ -37,7 +37,7 @@ def signup():
         # Flash a success message
         flash("Success ! Thank You For Your Contribution")
         # Redirect back to home
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     return render_template('signup.html', form=form)
 
